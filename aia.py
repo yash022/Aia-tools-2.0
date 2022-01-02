@@ -23,51 +23,63 @@ with zipfile.ZipFile(aia_converted_to_zip_path, 'r') as zip:
 
 
 class Project_properties:
-    def project_created_on(self):
+    @staticmethod
+    def project_created_on():
         project_properties_path = open(Path(path_to_extracted_files + "\youngandroidproject\project.properties"))
         print(str(project_properties_path.readlines()).split(',')[1].replace("#", " ").replace("'", " ").replace("\n"," "))
 
-    def app_name(self):
+    @staticmethod
+    def app_name():
         project_properties_path = open(Path(path_to_extracted_files + "\youngandroidproject\project.properties"))
         print(str(project_properties_path.readlines()).split(',')[3].replace("name=", " ").replace("'", " ").replace("\n"," "))
 
-    def defaultfilescope(self):
+    @staticmethod
+    def defaultfilescope():
         project_properties_path = open(Path(path_to_extracted_files + "\youngandroidproject\project.properties"))
         print(str(project_properties_path.readlines()[4]).split("=")[1])
 
-    def username_for_ai2(self):
+    @staticmethod
+    def username_for_ai2():
         project_properties_path = open(Path(path_to_extracted_files + "\youngandroidproject\project.properties"))
         print(str(project_properties_path.readlines()[5]).split("=")[1].split(".")[1])
 
-    def accent_color(self):
+    @staticmethod
+    def accent_color():
         project_properties_path = open(Path(path_to_extracted_files + "\youngandroidproject\project.properties"))
         print(str(project_properties_path.readlines()[6]).split("=")[1])
 
-    def sizing(self):
+    @staticmethod
+    def sizing():
         project_properties_path = open(Path(path_to_extracted_files + "\youngandroidproject\project.properties"))
         print(str(project_properties_path.readlines()[7]).split("=")[1])
 
-    def theme(self):
+    @staticmethod
+    def theme():
         project_properties_path = open(Path(path_to_extracted_files + "\youngandroidproject\project.properties"))
         print(str(project_properties_path.readlines()[8]).split("=")[1])
 
-    def showlistsasjson(self):
+    @staticmethod
+    def showlistsasjson():
         project_properties_path = open(Path(path_to_extracted_files + "\youngandroidproject\project.properties"))
         print(str(project_properties_path.readlines()[9]).split("=")[1])
 
-    def useslocation(self):
+    @staticmethod
+    def useslocation():
         project_properties_path = open(Path(path_to_extracted_files + "\youngandroidproject\project.properties"))
         print(str(project_properties_path.readlines()[10]).split("=")[1])
 
-    def primary_color(self):
+    @staticmethod
+    def primary_color():
         project_properties_path = open(Path(path_to_extracted_files + "\youngandroidproject\project.properties"))
         print(str(project_properties_path.readlines()[13]).split("=")[1])
 
-    def versioncode(self):
+    @staticmethod
+    def versioncode():
         project_properties_path = open(Path(path_to_extracted_files + "\youngandroidproject\project.properties"))
         print(str(project_properties_path.readlines()[16]).split("=")[1])
 
-    def color_primary_dark(self):
+    @staticmethod
+    def color_primary_dark():
         project_properties_path = open(Path(path_to_extracted_files + "\youngandroidproject\project.properties"))
         print(str(project_properties_path.readlines()[17]).split("=")[1])
 
