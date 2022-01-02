@@ -26,68 +26,69 @@ class Project_properties:
     @staticmethod
     def project_created_on():
         project_properties_path = open(Path(path_to_extracted_files + "\youngandroidproject\project.properties"))
-        print(str(project_properties_path.readlines()).split(',')[1].replace("#", " ").replace("'", " ").replace("\n"," "))
+        return (str(project_properties_path.readlines()).split(',')[1].replace("#", " ").replace("'", " ").replace("\n"," "))
 
     @staticmethod
     def app_name():
         project_properties_path = open(Path(path_to_extracted_files + "\youngandroidproject\project.properties"))
-        print(str(project_properties_path.readlines()).split(',')[3].replace("name=", " ").replace("'", " ").replace("\n"," "))
+        return (str(project_properties_path.readlines()).split(',')[3].replace("name=", " ").replace("'", " ").replace("\n"," "))
 
     @staticmethod
     def defaultfilescope():
         project_properties_path = open(Path(path_to_extracted_files + "\youngandroidproject\project.properties"))
-        print(str(project_properties_path.readlines()[4]).split("=")[1])
+        return (str(project_properties_path.readlines()[4]).split("=")[1])
 
     @staticmethod
     def username_for_ai2():
         project_properties_path = open(Path(path_to_extracted_files + "\youngandroidproject\project.properties"))
-        print(str(project_properties_path.readlines()[5]).split("=")[1].split(".")[1])
+        return (str(project_properties_path.readlines()[5]).split("=")[1].split(".")[1])
+        
 
     @staticmethod
     def accent_color():
         project_properties_path = open(Path(path_to_extracted_files + "\youngandroidproject\project.properties"))
-        print(str(project_properties_path.readlines()[6]).split("=")[1])
+        return (str(project_properties_path.readlines()[6]).split("=")[1])
 
     @staticmethod
     def sizing():
         project_properties_path = open(Path(path_to_extracted_files + "\youngandroidproject\project.properties"))
-        print(str(project_properties_path.readlines()[7]).split("=")[1])
+        return (str(project_properties_path.readlines()[7]).split("=")[1])
 
     @staticmethod
     def theme():
         project_properties_path = open(Path(path_to_extracted_files + "\youngandroidproject\project.properties"))
-        print(str(project_properties_path.readlines()[8]).split("=")[1])
+        return (str(project_properties_path.readlines()[8]).split("=")[1])
 
     @staticmethod
     def showlistsasjson():
         project_properties_path = open(Path(path_to_extracted_files + "\youngandroidproject\project.properties"))
-        print(str(project_properties_path.readlines()[9]).split("=")[1])
+        return (str(project_properties_path.readlines()[9]).split("=")[1])
 
     @staticmethod
     def useslocation():
         project_properties_path = open(Path(path_to_extracted_files + "\youngandroidproject\project.properties"))
-        print(str(project_properties_path.readlines()[10]).split("=")[1])
+        return (str(project_properties_path.readlines()[10]).split("=")[1])
 
     @staticmethod
     def primary_color():
         project_properties_path = open(Path(path_to_extracted_files + "\youngandroidproject\project.properties"))
-        print(str(project_properties_path.readlines()[13]).split("=")[1])
+        return (str(project_properties_path.readlines()[13]).split("=")[1])
 
     @staticmethod
     def versioncode():
         project_properties_path = open(Path(path_to_extracted_files + "\youngandroidproject\project.properties"))
-        print(str(project_properties_path.readlines()[16]).split("=")[1])
+        return (str(project_properties_path.readlines()[16]).split("=")[1])
 
     @staticmethod
     def color_primary_dark():
         project_properties_path = open(Path(path_to_extracted_files + "\youngandroidproject\project.properties"))
-        print(str(project_properties_path.readlines()[17]).split("=")[1])
+        return (str(project_properties_path.readlines()[17]).split("=")[1])
 
 def Extesnion_list():
     for extensions in os.listdir(path_to_extracted_files+"\\assets\external_comps"):
         file_json_text = json.loads(open(path_to_extracted_files+"\\assets\external_comps"+"\\"+extensions+"\\"+"components.json").read())
         json_to_dict = dict(file_json_text[0])
-        print(json_to_dict['name'])
+        return(json_to_dict['name'])
 
 project_properties_path = open (Path (path_to_extracted_files + "\youngandroidproject\project.properties"))
 username = (str (project_properties_path.readlines ()[5]).split ("=")[1].split (".")[1])
