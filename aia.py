@@ -6,36 +6,31 @@ from pathlib import Path
 
 __author__ = 'Yash Sehgal <@yash@yashsehgal.tech>'
 
-
 # function to remove spaces from sentence
 def remove_space(string):
     return string.replace(" ", "")
 
-
-# to set the aia file path
-def aia_file(file_path):
-    return file_path
-
-
 # changes the file extension to zip from aia
-aia_rename_tozip = Path(str(aia_file)).with_suffix('.zip')
+aia_path_input = input("please enter the path for the aia :  ")
+
+aia_notrenamed = Path(aia_path_input)
+aia_notrenamed.rename(aia_notrenamed.with_suffix('.zip'))
 
 # stores the path where the zip file is stored , for further use
-aia_converted_to_zip_path = str(aia_file).replace(".aia", ".zip")
+aia_converted_to_zip_path = str(aia_path_input).replace(".aia", ".zip")
 
 # stores the username to format the path for the zip file
 username = os.getlogin()
 
 # stores the aia file name for later use
-aia_name = os.path.basename(str(aia_file))
+aia_name = os.path.basename(str(aia_path_input))
 
 # makes the path for the zip file to be extracted
 path_to_extracted_files = str(os.path.join(r"C:\Users", username))+"\\Desktop"+r"\aiainfo_"+remove_space(str(aia_name).replace(".aia", " "))
 
 # extracts the zip file
-with zipfile.ZipFile(aia_converted_to_zip_path, 'r') as zip_file:
-    zip_file.extractall(path_to_extracted_files)
-
+with zipfile.ZipFile(aia_converted_to_zip_path, 'r') as zip_f:
+    zip_f.extractall(path_to_extracted_files)
 
 # class for ProjectProperties
 class ProjectProperties:
@@ -120,19 +115,12 @@ class ProjectProperties:
 
 # function/method to get the list of extensions used in the aia
 def extesnion_list():
-    for extensions in os.listdir(path_to_extracted_files+"\\"+"assets"+"\\"+"external_comps"):
-        file_json_text = json.loads(open(path_to_extracted_files+"\\"+"assets"+"\\"+"external_comps"+"\\"+extensions+"\\"+"components.json").read())
-        json_to_dict = dict(file_json_text[0])
-        return json_to_dict['name']
+    try:
+        for extensions in os.listdir(remove_space(path_to_extracted_files+"\\"+"assets"+"\\"+"external_comps")):
+            file_json_text = json.loads(open(path_to_extracted_files+"\\"+"assets"+"\\"+"external_comps"+"\\"+extensions+"\\"+"components.json").read())
+            json_to_dict = dict(file_json_text[0])
+            return json_to_dict['name']
 
-
-# makes the path for screen scm files
-username = ProjectProperties().username_for_ai2()
-app_name = ProjectProperties().app_name()
-path_for_blocks_info = path_to_extracted_files+"\\"+"src\\appinventor"+"\\"+username+"\\"+str(remove_space(app_name)).replace("\\n", " ")
-
-# extracts the json data from all screen scm files
-for file in os.listdir(remove_space(path_for_blocks_info)):
-    if file.split(".")[1] == "scm":
-        Json_data = str(open(remove_space(path_for_blocks_info+"\\"+file)).read()).removeprefix("#|").removesuffix("|#").replace("$JSON", " ")
+    except:
+        return "either there are no extensions used or some error occured"
 
