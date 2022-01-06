@@ -123,4 +123,10 @@ def extesnion_list():
 
     except:
         return "either there are no extensions used or some error occured"
+    
+# makes the path for screen scm files
+username = ProjectProperties().username_for_ai2()
+app_name = ProjectProperties().app_name()
+path_for_blocks_info = path_to_extracted_files+"\\"+"src\\appinventor"+"\\"+username+"\\"+str(remove_space(app_name)).replace("\\n", " ")
+
 
