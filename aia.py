@@ -129,4 +129,13 @@ username = ProjectProperties().username_for_ai2()
 app_name = ProjectProperties().app_name()
 path_for_blocks_info = path_to_extracted_files+"\\"+"src\\appinventor"+"\\"+username+"\\"+str(remove_space(app_name)).replace("\\n", " ")
 
+class BlocksInfo:
+    @staticmethod
+    def number_of_screens():
+        screens = []
+        for scm_files in os.listdir (Path (remove_space (path_for_blocks_info))):
+            if scm_files.endswith (".scm"):
+                screens.append (scm_files)
+
+        return len (screens)
 
